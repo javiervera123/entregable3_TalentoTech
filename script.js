@@ -235,23 +235,52 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let resultado;
 
-    switch (operacion) {
-      case "suma1":
+    if (operacion==="suma1"){
         resultado = suma1(num1, num2);
-        break;
-      case "resta1":
-        resultado = resta1(num1, num2);
-        break;
-      case "multiplicacion1":
-        resultado = multiplicacion1(num1, num2);
-        break;
-      case "division":
-        resultado = division1(num1, num2);
-        break;
-      default:
+    }
+    else if (operacion==="resta1"){
+        resultado = resta1(num1, num2);  
+    }
+    else if (operacion==="multiplicacion1"){
+        resultado = multiplicacion1(num1, num2);  
+    }
+     else if(operacion==="division1"){
+        resultado = division1(num1, num2);  
+    } else{
         resultado = "Operación no válida..";
     }
 
     resultadoElement.innerHTML = `<p><strong>Resultado:</strong> ${resultado}</p>`;
   });
 });
+  // bucle while para realizar operaciones hasta que el usuario quiera salir
+
+function iniciarCalculadora() {
+  let continuar = true;
+
+  while (continuar) {
+    const num1 = parseFloat(prompt("Ingrese el primer número:"));
+    const num2 = parseFloat(prompt("Ingrese el segundo número:"));
+    const operacion = prompt("Ingresa la operación (suma = 1, resta =2, multiplicacion = 3, division = 4)");
+    
+    let resultado;
+
+    if (operacion === "1") {
+      resultado = suma1(num1, num2);
+    } else if (operacion === "2") {
+      resultado = resta1(num1, num2);
+    } else if (operacion === "3") {
+      resultado = multiplicacion1(num1, num2);
+    } else if (operacion === "4") {
+      resultado = division1(num1, num2);
+    } else {
+      resultado = "Operación no válida";
+    }
+
+    alert("Resultado: " + resultado);
+
+    continuar = confirm("¿Quieres hacer otra operación?"); // confirm obtiene el valor del boton
+  }                                                    // aceptar = true  cancelar = false
+  if (continuar== false){ alert("Nos vemos pronto ")}
+}
+
